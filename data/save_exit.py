@@ -1,13 +1,14 @@
 import os
 import pickle
 import sys
+from data.myinput import myinput
 
 
 def save(character, en1):
     from data.menu import game_menu
     if os.path.exists("save_file"):
         print("Are you sure you want to overwrite your current save? Y/N")
-        option = input("> ")
+        option = myinput("> ")
         if option.lower() == "y":
             with open('save_file', 'wb') as f:
                 pickle.dump(character, f)
@@ -18,7 +19,7 @@ def save(character, en1):
         with open('save_file', 'wb') as f:
             pickle.dump(character, f)
             print("Game has been saved.")
-    input(">...")
+    myinput(">...")
     game_menu(character, en1)
 
 
@@ -29,10 +30,11 @@ def auto_save(character):
 
 def exit_check(character, en1):
     from data.menu import game_menu
+    from main import title_screen_selection
     os.system("cls")
     print("Are you sure you want to exit? Make sure you have saved first. Y/N")
-    choice = input("> ")
-    if choice.lower() == "y":
-        sys.exit()
+    choice = myinput("> ")
+    if choice.lower()[0] == "y":
+        title_screen_selection(character, en1)
     else:
         game_menu(character, en1)

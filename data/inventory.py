@@ -2,6 +2,7 @@ import os
 import sys
 from data.art import Colours
 from data.item_rarity import Item_Rarity
+from data.myinput import myinput
 
 sys.setrecursionlimit(10**6)  # test
 
@@ -14,7 +15,7 @@ def inventory(character, en1):
     print("2.) Potions")
     print("3.) Misc")
     print("B.) Back")
-    option = input("> ")
+    option = myinput("> ")
     if option == "1":
         item_type(character, en1)
     if option == "2":
@@ -30,7 +31,7 @@ def item_type(character, en1):
     print("1.) Weapons")
     print("2.) Armour")
     print("B.) Back")
-    option = input("> ")
+    option = myinput("> ")
     if option == "1":
         equip_weapons(character, en1)
     if option == "2":
@@ -56,7 +57,7 @@ def equip_weapons(character, en1):
     if not character.player_weapons:
         print("Nothing here...")
     print("B.) Back")
-    choice = input("> ")
+    choice = myinput("> ")
     if choice in character.player_weapons:
         character.current_weapon = choice
         if choice in Item_Rarity.uncommon_weapons:
@@ -72,9 +73,9 @@ def equip_weapons(character, en1):
         item_type(character, en1)
     else:
         print("Not a valid item.")
-        input(">...")
+        myinput(">...")
         inventory(character, en1)
-    input(">...")
+    myinput(">...")
 
 
 def equip_armour(character, en1):
@@ -93,7 +94,7 @@ def equip_armour(character, en1):
     if not character.player_armour:
         print("Nothing here...")
     print("B.) Back")
-    choice = input("> ")
+    choice = myinput("> ")
     if choice in character.player_armour:
         character.current_armour = choice
         if choice in Item_Rarity.uncommon_armour:
@@ -109,9 +110,9 @@ def equip_armour(character, en1):
         item_type(character, en1)
     else:
         print("Not a valid item.")
-        input(">...")
+        myinput(">...")
         inventory(character, en1)
-    input(">...")
+    myinput(">...")
 
 
 def potion_items(character, en1):
@@ -121,7 +122,7 @@ def potion_items(character, en1):
         print(str(i) + ".)", item['name'],  item['des'], "(x" + str(item['quantity']) + ")")
         i += 1
     try:
-        item_choice = int(input("> ")) - 1
+        item_choice = int(myinput("> ")) - 1
     except ValueError:
         print("Input must be a number.")
     else:
@@ -164,7 +165,7 @@ def potion_items(character, en1):
                     character.items[item_choice]['quantity'] -= 1
         else:
             print("That number is out of range.")
-    input(">...")
+    myinput(">...")
     inventory(character, en1)
 
 
@@ -173,6 +174,6 @@ def misc_items(character, en1):
     for character.x, character.y in character.misc_items.items():
         print("# " + character.x)
     print("B.) Back")
-    choice = input("> ")
+    choice = myinput("> ")
     if choice.lower() == "b":
         inventory(character, en1)

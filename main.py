@@ -15,7 +15,9 @@ from data.intro import intro
 from data.full_screen import maximize_console
 from data.art import title_art, Colours
 from data.loading import loading_1
-
+from data.myinput import myinput
+import data.myinput
+from data.twitter_chat_reader import ChatHandler
 sys.setrecursionlimit(10**6)  # test
 
 winsound.PlaySound("music\\title_screen_delay.wav", winsound.SND_ASYNC + winsound.SND_FILENAME)
@@ -23,6 +25,8 @@ winsound.PlaySound("music\\title_screen_delay.wav", winsound.SND_ASYNC + winsoun
 
 # game title screen
 def main(character, en1):
+    twitter_handler = ChatHandler(data.myinput.input_queue, "twitch_token.json")
+    twitter_handler.start()
     loading_1()
     maximize_console()
     os.system("cls")
@@ -34,7 +38,7 @@ def title_screen_selection(character, en1):
     maximize_console()
     os.system("cls")
     title_art()
-    option = input("> ")
+    option = myinput("> ")
     if option == "1":
         intro(en1)
     elif option == "2":
@@ -43,7 +47,7 @@ def title_screen_selection(character, en1):
                 character = pickle.load(f)
             os.system("cls")
             print("Save file loaded.")
-            input(">...")
+            myinput(">...")
             character.town_zone = True
             character.forest_zone = True
             character.water_zone = True
@@ -59,12 +63,12 @@ def title_screen_selection(character, en1):
         else:
             os.system("cls")
             print("You have no save file.")
-            input(">...")
+            myinput(">...")
             title_screen_selection(character, en1)
     elif option == "3":
         help_menu(character, en1)
     elif option == "4":
-        sys.exit()
+        title_screen_selection(character, en1)
     else:
         title_screen_selection(character, en1)
 
@@ -83,7 +87,7 @@ def help_menu(character, en1):
         "and right click the mouse to paste, or Ctrl + V.\n")
     print("Some inputs require a Yes or No input, which can be done by simply inputting Y for yes, and N for no.\n")
     print("For returning back to the main menu you can usually press ENTER to do so.\n")
-    input(">...")
+    myinput(">...")
     os.system("cls")
     title_art()
     title_screen_selection(character, en1)

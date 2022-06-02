@@ -2,6 +2,7 @@ import random
 import os
 from data.art import Colours
 from data.item_rarity import Item_Rarity
+from data.myinput import myinput
 
 
 class Loot:
@@ -57,7 +58,7 @@ def loot1(character, en1):
             remove = x
             print("{} dropped {}.".format(en1.name, Colours.BOLD + Colours.GREEN + x + Colours.END))
             print("Would you like to pick up {}? Y/N".format(Colours.BOLD + Colours.GREEN + x + Colours.END))
-            choice = input("> ")
+            choice = myinput("> ")
             if choice.lower() == "y":
                 if x in character.player_weapons or x in character.player_armour:
                     print("You already have {}, you should leave it for someone else.".format(Colours.BOLD + Colours.GREEN + x + Colours.END))
@@ -72,7 +73,7 @@ def loot1(character, en1):
             options = ["y", "n"]
             while choice.lower() not in options:
                 print("You must enter Y or N.")
-                choice = input("> ")
+                choice = myinput("> ")
                 if choice.lower() == "y":
                     if x in character.player_weapons or x in character.player_armour:
                         print("You already have {}, you should leave it for someone else.".format(Colours.BOLD + Colours.GREEN + x + Colours.END))
@@ -85,7 +86,7 @@ def loot1(character, en1):
                 elif choice.lower() == "n":
                     print("You didn't pick up {}.".format(Colours.BOLD + Colours.GREEN + x + Colours.END))
             del Loot.drop[remove]
-    input(">...")
+    myinput(">...")
 
 
 def loot2(character, en1):
@@ -104,7 +105,7 @@ def loot2(character, en1):
             remove = x
             print("{} dropped {}.".format(en1.name, Colours.BOLD + Colours.GREEN + x + Colours.END))
             print("Would you like to pick up {}? Y/N".format(Colours.BOLD + Colours.GREEN + x + Colours.END))
-            choice = input("> ")
+            choice = myinput("> ")
             if choice.lower() == "y":
                 if x in character.player_weapons or x in character.player_armour:
                     print("You already have {}, you should leave it for someone else.".format(Colours.BOLD + Colours.GREEN + x + Colours.END))
@@ -119,7 +120,7 @@ def loot2(character, en1):
             options = ["y", "n"]
             while choice.lower() not in options:
                 print("You must enter Y or N.")
-                choice = input("> ")
+                choice = myinput("> ")
                 if choice.lower() == "y":
                     if x in character.player_weapons or x in character.player_armour:
                         print("You already have {}, you should leave it for someone else.".format(Colours.BOLD + Colours.GREEN + x + Colours.END))
@@ -132,7 +133,7 @@ def loot2(character, en1):
                 elif choice.lower() == "n":
                     print("You didn't pick up {}.".format(Colours.BOLD + Colours.GREEN + x + Colours.END))
             del Loot.drop[remove]
-    input(">...")
+    myinput(">...")
 
 
 def loot3(character, en1):
@@ -151,7 +152,7 @@ def loot3(character, en1):
             remove = x
             print("{} dropped {}.".format(en1.name, Colours.BOLD + Colours.GREEN + x + Colours.END))
             print("Would you like to pick up {}? Y/N".format(Colours.BOLD + Colours.GREEN + x + Colours.END))
-            choice = input("> ")
+            choice = myinput("> ")
             if choice.lower() == "y":
                 if x in character.player_weapons or x in character.player_armour:
                     print("You already have {}, you should leave it for someone else.".format(Colours.BOLD + Colours.GREEN + x + Colours.END))
@@ -166,7 +167,7 @@ def loot3(character, en1):
             options = ["y", "n"]
             while choice.lower() not in options:
                 print("You must enter Y or N.")
-                choice = input("> ")
+                choice = myinput("> ")
                 if choice.lower() == "y":
                     if x in character.player_weapons or x in character.player_armour:
                         print("You already have {}, you should leave it for someone else.".format(Colours.BOLD + Colours.GREEN + x + Colours.END))
@@ -189,7 +190,7 @@ def loot3(character, en1):
             remove = x
             print("{} dropped {}.".format(en1.name, Colours.BOLD + Colours.BLUE + x + Colours.END))
             print("Would you like to pick up {}? Y/N".format(Colours.BOLD + Colours.BLUE + x + Colours.END))
-            choice = input("> ")
+            choice = myinput("> ")
             if choice.lower() == "y":
                 if x in character.player_weapons or x in character.player_armour:
                     print("You already have {}, you should leave it for someone else.".format(Colours.BOLD + Colours.BLUE + x + Colours.END))
@@ -204,7 +205,7 @@ def loot3(character, en1):
             options = ["y", "n"]
             while choice.lower() not in options:
                 print("You must enter Y or N.")
-                choice = input("> ")
+                choice = myinput("> ")
                 if choice.lower() == "y":
                     if x in character.player_weapons or x in character.player_armour:
                         print("You already have {}, you should leave it for someone else.".format(Colours.BOLD + Colours.BLUE + x + Colours.END))
@@ -217,7 +218,7 @@ def loot3(character, en1):
                 elif choice.lower() == "n":
                     print("You didn't pick up {}.".format(Colours.BOLD + Colours.BLUE + x + Colours.END))
             del Loot.drop[remove]
-    input(">...")
+    myinput(">...")
 
 
 def loot4(character, en1):
@@ -236,7 +237,7 @@ def loot4(character, en1):
             remove = x
             print("{} dropped {}.".format(en1.name, Colours.BOLD + Colours.BLUE + x + Colours.END))
             print("Would you like to pick up {}? Y/N".format(Colours.BOLD + Colours.BLUE + x + Colours.END))
-            choice = input("> ")
+            choice = myinput("> ")
             if choice.lower() == "y":
                 if x in character.player_weapons or x in character.player_armour:
                     print("You already have {}, you should leave it for someone else.".format(Colours.BOLD + Colours.BLUE + x + Colours.END))
@@ -251,7 +252,7 @@ def loot4(character, en1):
             options = ["y", "n"]
             while choice.lower() not in options:
                 print("You must enter Y or N.")
-                choice = input("> ")
+                choice = myinput("> ")
                 if choice.lower() == "y":
                     if x in character.player_weapons or x in character.player_armour:
                         print("You already have {}, you should leave it for someone else.".format(
@@ -276,7 +277,7 @@ def loot4(character, en1):
             remove = x
             print("{} dropped {}.".format(en1.name, Colours.BOLD + Colours.PURPLE + x + Colours.END))
             print("Would you like to pick up {}? Y/N".format(Colours.BOLD + Colours.PURPLE + x + Colours.END))
-            choice = input("> ")
+            choice = myinput("> ")
             if choice.lower() == "y":
                 if x in character.player_weapons or x in character.player_armour:
                     print("You already have {}, you should leave it for someone else.".format(Colours.BOLD + Colours.PURPLE + x + Colours.END))
@@ -291,7 +292,7 @@ def loot4(character, en1):
             options = ["y", "n"]
             while choice.lower() not in options:
                 print("You must enter Y or N.")
-                choice = input("> ")
+                choice = myinput("> ")
                 if choice.lower() == "y":
                     if x in character.player_weapons or x in character.player_armour:
                         print("You already have {}, you should leave it for someone else.".format(Colours.BOLD + Colours.PURPLE + x + Colours.END))
@@ -304,7 +305,7 @@ def loot4(character, en1):
                 elif choice.lower() == "n":
                     print("You didn't pick up {}.".format(Colours.BOLD + Colours.PURPLE + x + Colours.END))
             del Loot.drop[remove]
-    input(">...")
+    myinput(">...")
 
 
 def baron_loot(character, en1):
@@ -328,7 +329,7 @@ def baron_loot(character, en1):
             remove = x
             print("{} dropped {}.".format(en1.name, Colours.BOLD + Colours.PURPLE + x + Colours.END))
             print("Would you like to pick up {}? Y/N".format(Colours.BOLD + Colours.PURPLE + x + Colours.END))
-            choice = input("> ")
+            choice = myinput("> ")
             if choice.lower() == "y":
                 if x in character.player_weapons or x in character.player_armour:
                     print("You already have {}, you should leave it for someone else.".format(Colours.BOLD + Colours.PURPLE + x + Colours.END))
@@ -343,7 +344,7 @@ def baron_loot(character, en1):
             options = ["y", "n"]
             while choice.lower() not in options:
                 print("You must enter Y or N.")
-                choice = input("> ")
+                choice = myinput("> ")
                 if choice.lower() == "y":
                     if x in character.player_weapons or x in character.player_armour:
                         print("You already have {}, you should leave it for someone else.".format(Colours.BOLD + Colours.PURPLE + x + Colours.END))
@@ -366,7 +367,7 @@ def baron_loot(character, en1):
             remove = x
             print("{} dropped {}.".format(en1.name, Colours.BOLD + Colours.ORANGE + x + Colours.END))
             print("Would you like to pick up {}? Y/N".format(Colours.BOLD + Colours.ORANGE + x + Colours.END))
-            choice = input("> ")
+            choice = myinput("> ")
             if choice.lower() == "y":
                 if x in character.player_weapons or x in character.player_armour:
                     print("You already have {}, you should leave it for someone else.".format(Colours.BOLD + Colours.ORANGE + x + Colours.END))
@@ -381,7 +382,7 @@ def baron_loot(character, en1):
             options = ["y", "n"]
             while choice.lower() not in options:
                 print("You must enter Y or N.")
-                choice = input("> ")
+                choice = myinput("> ")
                 if choice.lower() == "y":
                     if x in character.player_weapons or x in character.player_armour:
                         print("You already have {}, you should leave it for someone else.".format(Colours.BOLD + Colours.ORANGE + x + Colours.END))
@@ -394,15 +395,15 @@ def baron_loot(character, en1):
                 elif choice.lower() == "n":
                     print("You didn't pick up {}.".format(Colours.BOLD + Colours.ORANGE + x + Colours.END))
             del Loot.drop[remove]
-    input(">...")
+    myinput(">...")
     if character.r10_event_2:
         print("Congratulations on defeating the Baron of Hell, would you like to go home and claim your rewards? Y/N")
-        choice = input("> ")
+        choice = myinput("> ")
         if choice.lower() == "y":
             character.location = "d1"
         else:
             print("It will be a long walk back...")
-            input(">...")
+            myinput(">...")
         character.r10_event_2 = False
 
 
@@ -414,7 +415,7 @@ def alien_loot(character, en1):
         remove = x
         print("{} dropped {}.".format(en1.name, Colours.BOLD + Colours.ORANGE + x + Colours.END))
         print("Would you like to pick up {}? Y/N".format(Colours.BOLD + Colours.ORANGE + x + Colours.END))
-        choice = input("> ")
+        choice = myinput("> ")
         if choice.lower() == "y":
             if x in character.player_weapons:
                 print("You already have {}, you should leave it for someone else.".format(Colours.BOLD + Colours.ORANGE + x + Colours.END))
@@ -427,7 +428,7 @@ def alien_loot(character, en1):
         options = ["y", "n"]
         while choice.lower() not in options:
             print("You must enter Y or N.")
-            choice = input("> ")
+            choice = myinput("> ")
             if choice.lower() == "y":
                 if x in character.player_weapons:
                     print("You already have {}, you should leave it for someone else.".format(Colours.BOLD + Colours.ORANGE + x + Colours.END))
@@ -438,13 +439,13 @@ def alien_loot(character, en1):
             elif choice.lower() == "n":
                 print("You didn't pick up {}.".format(Colours.BOLD + Colours.ORANGE + x + Colours.END))
         del Loot.drop[remove]
-    input(">...")
+    myinput(">...")
 
 
 def gold_cheat(character, en1):
     from data.menu import game_menu
     os.system("cls")
     print("Cheat Activated: + 1000 Gold")
-    input(">...")
+    myinput(">...")
     character.gold += 1000
     game_menu(character, en1)

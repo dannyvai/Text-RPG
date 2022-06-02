@@ -1,5 +1,6 @@
 import os
 from data.art import Colours
+from data.myinput import myinput
 
 
 class Quests_2:
@@ -26,7 +27,7 @@ def quests(character, en1):
     print("Select an Option:")
     print("1.) Spell Information")
     print("2.) Quest Log")
-    option = input("> ")
+    option = myinput("> ")
     if option == "1":
         spell_info(character, en1)
     elif option == "2":
@@ -58,7 +59,7 @@ def spell_info(character, en1):
           "the base heal of [Regenerate] (50) + your hidden attack high stat. {}/{}"
           .format(character.current_atk + 50 + character.atk_l,
                   character.current_atk + 50 + character.atk_h))
-    input(">...")
+    myinput(">...")
     quests(character, en1)
 
 
@@ -75,7 +76,7 @@ def quest_log(character, en1):
         print("# " + Colours.GREEN3 + quest["name"].name + Colours.END)
     else:
         try:
-            item_choice = int(input("\n> ")) - 1
+            item_choice = int(myinput("\n> ")) - 1
         except ValueError:
             print("Input must be a number.")
         else:
@@ -85,7 +86,7 @@ def quest_log(character, en1):
                       character.active_quests[item_choice]["name"].requirement2)
             else:
                 print("That number is out of range.")
-    input(">...")
+    myinput(">...")
     quests(character, en1)
 
 

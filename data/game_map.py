@@ -1,5 +1,6 @@
 import sys
 from data.art import cut_scene_art
+from data.myinput import myinput
 
 sys.setrecursionlimit(10**6)  # test
 
@@ -376,12 +377,12 @@ def move_w(character, en1):
     from data.menu import game_menu
     # print("Where do you want to move to?\n")
     # print("Options = (W, A, S, D)")
-    # direction = input("> ")
+    # direction = myinput("> ")
     # if direction in ['W', "w"]:
     destination = Map.zone_map[character.location][Map.UP]
     if destination == "":
         print("You can't go that way.")
-        input(">...")
+        myinput(">...")
         game_menu(character, en1)
     else:
         movement_handler(destination, character, en1)
@@ -413,7 +414,7 @@ def move_a(character, en1):
     destination = Map.zone_map[character.location][Map.LEFT]
     if destination == "":
         print("You can't go that way.")
-        input(">...")
+        myinput(">...")
         game_menu(character, en1)
     else:
         movement_handler(destination, character, en1)
@@ -424,7 +425,7 @@ def move_s(character, en1):
     destination = Map.zone_map[character.location][Map.DOWN]
     if destination == "":
         print("You can't go that way.")
-        input(">...")
+        myinput(">...")
         game_menu(character, en1)
     else:
         movement_handler(destination, character, en1)
@@ -435,7 +436,7 @@ def move_d(character, en1):
     destination = Map.zone_map[character.location][Map.RIGHT]
     if destination == "":
         print("You can't go that way.")
-        input(">...")
+        myinput(">...")
         game_menu(character, en1)
     else:
         movement_handler(destination, character, en1)
@@ -471,40 +472,40 @@ def print_location(character, en1):
     print(Map.zone_map[character.location][Map.DESCRIPTION])
     if character.location == 'f6':
         if character.f6_event_1:
-            input(">...")
+            myinput(">...")
             print("You finally see a way out of the forest, on the edge of the forest is a river.")
             character.f6_event_1 = False
     elif character.location == 'g6':
         if character.g6_event_1:
-            input(">...")
+            myinput(">...")
             print("You look around but there's no bridge in sight, it seems the only way to cross the river is to swim.\n"
                   "Good thing you took all of those swimming classes.")
             character.g6_event_1 = False
     elif character.location == 'j6':
         if character.j6_event_1:
-            input(">...")
+            myinput(">...")
             print("You're almost onto the other side of the river now, you can see the sand in the distance.")
             character.j6_event_1 = False
     elif character.location == "k6":
         if character.k6_event_1:
-            input(">...")
+            myinput(">...")
             print("At last, dry land.")
             character.k6_event_1 = False
     elif character.location == "n6":
         if character.n6_event_1:
-            input(">...")
+            myinput(">...")
             print("There's a small cabin up ahead, maybe you should take a look inside.")
             character.n6_event_1 = False
     elif character.location == "n7":
         if character.n7_event_1:
-            input(">...")
+            myinput(">...")
             print("In the distance you see a small opening in the ground, that must be the entrance to Virwaki Dungeon.")
             character.n7_event_1 = False
     elif character.location == "o7":
         if character.n7_event_1:
-            input(">...")
+            myinput(">...")
             print("You descend down the stairs into Virwaki Dungeon, which is dark, smelly, and has a lot of unnerving\n"
                   "sounds coming from the depths of the Dungeon.")
             character.n7_event_1 = False
-    input(">...")
+    myinput(">...")
     game_menu(character, en1)

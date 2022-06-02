@@ -1,3 +1,9 @@
 # Default ignored files
 /shelf/
 /workspace.xml
+twitch_token.json
+save_file
+data/__pycache__
+.idea
+__pycache__/
+chat.log

@@ -12,6 +12,7 @@ from data.quests import quests
 from data.examine import examine
 from data.teleport import teleport
 from data.save_exit import save, auto_save, exit_check
+from data.myinput import myinput
 
 sys.setrecursionlimit(10**6)  # test
 
@@ -66,7 +67,7 @@ def game_menu(character, en1):
     print("4.) Teleport")
     print("5.) Save")
     print("6.) Exit\n")
-    option = input("> ")
+    option = myinput("> ")
     os.system('cls')
     if option.lower() == "w":
         move_w(character, en1)

@@ -8,6 +8,7 @@ from data.enemies import Enemy, Mobs
 from data.music import fight_music, win_music, defeat_music
 from data.loot import loot1, loot2, loot3, loot4, baron_loot, alien_loot
 from data.art import F_Mobs, W_Mobs, D_Mobs, C_Mobs, Colours, player_health_bar, enemy_health_bar, player_attack_bar, easter_egg_mob
+from data.myinput import myinput
 
 sys.setrecursionlimit(10**6)  # test
 
@@ -31,7 +32,7 @@ def enemy_gen(character):
     else:
         print("You have encountered a {}.".format(en1.name))
     enemy_print(en1, character)
-    input(">...")
+    myinput(">...")
     fight(character, en1)
 
 
@@ -86,7 +87,7 @@ def fight(character, en1):
     print("Attack: {} | Defence: {}\n".format(character.current_atk, character.current_defence))
     print("1.) Attack")
     print("2.) Run\n")
-    option = input("> ")
+    option = myinput("> ")
     if option == "1":
         spell_choice(character, en1)
     if option == "2":
@@ -101,34 +102,34 @@ def run(character, en1):
     if character.location == "d4":
         if character.d4_event_1:
             print("You can't run!")
-            input(">...")
+            myinput(">...")
     if character.location == "f6":
         if character.f6_event_2:
             print("You can't run!")
-            input(">...")
+            myinput(">...")
     if character.location == "g6":
         if character.g6_event_2:
             print("You can't run!")
-            input(">...")
+            myinput(">...")
     if character.location == "k6":
         if character.k6_event_2:
             print("You can't run!")
-            input(">...")
+            myinput(">...")
     if character.location == "o7":
         if character.o7_event_2:
             print("You can't run!")
-            input(">...")
+            myinput(">...")
     if character.location == "q10":
         if character.q10_event_1:
             print("You can't run!")
-            input(">...")
+            myinput(">...")
     if en1.name == "Baron of Hell":
         print("You can't run from the Baron of Hell!")
-        input(">...")
+        myinput(">...")
     if character.location not in ["d4", "f6", "g6", "k6", "o7", "q10", "r10"]:
         if run_chance >= 6:
             print("You ran away successfully.")
-            input(">...")
+            myinput(">...")
             character.town_zone = True
             character.forest_zone = True
             character.water_zone = True
@@ -137,7 +138,7 @@ def run(character, en1):
             game_menu(character, en1)
         else:
             print("You tried to run away but were hit by {}.".format(en1.name))
-            input(">...")
+            myinput(">...")
     character.player_atk_turn = False
     if not character.player_atk_turn:
         if en1.name == "Baron of Hell":
@@ -157,7 +158,7 @@ def spell_choice(character, en1):
                                                                                   character.current_atk // 2 + bleed.dmg + character.atk_h))
     print("4.) [Regenerate]   ({} - {}) HP  [Cost 50]".format(character.current_atk + regen.dmg + character.atk_l,
                                                               character.current_atk + regen.dmg + character.atk_h))
-    option = input("> ")
+    option = myinput("> ")
     if option == "1":
         character_range = random.randint(character.atk_l, character.atk_h)
         character_attack = character_range + character.current_atk
@@ -171,7 +172,7 @@ def spell_choice(character, en1):
             character.b_atk_p += random.randint(15, 25)
             if character.b_atk_p >= character.m_atk_p:
                 character.b_atk_p = character.m_atk_p
-        input(">...")
+        myinput(">...")
     elif option == "2":
         if character.b_atk_p >= great_strike.cost:
             character.b_atk_p -= great_strike.cost
@@ -184,10 +185,10 @@ def spell_choice(character, en1):
                 en1.hp -= character_attack - en1.defence
                 print("Your [Great Strike] attack hits for {} damage.".format(character_attack - en1.defence))
                 character.player_atk_turn = False
-            input(">...")
+            myinput(">...")
         else:
             print("You don't have enough Attack Power for that spell.")
-            input(">...")
+            myinput(">...")
             fight(character, en1)
     elif option == "3":
         if character.b_atk_p >= bleed.cost:
@@ -200,9 +201,9 @@ def spell_choice(character, en1):
             character.bleed_check = True
         else:
             print("You don't have enough Attack Power for that spell.")
-            input(">...")
+            myinput(">...")
             fight(character, en1)
-        # input(">...")
+        # myinput(">...")
     elif option == "4":
         if character.b_atk_p >= regen.cost:
             character.b_atk_p -= regen.cost
@@ -219,9 +220,9 @@ def spell_choice(character, en1):
                 character.player_atk_turn = False
         else:
             print("You don't have enough Attack Power for that spell.")
-            input(">...")
+            myinput(">...")
             fight(character, en1)
-        input(">...")
+        myinput(">...")
     else:
         fight(character, en1)
     if character.bleed_check:
@@ -247,7 +248,7 @@ def enemy_atk(character, en1):
         print("You blocked all of the damage.\n")
     else:
         character.hp -= enemy_attack - character.current_defence
-        input(">...")
+        myinput(">...")
     if character.base_hp <= 0:
         end_fight_lose(character, en1)
     fight(character, en1)
@@ -256,7 +257,7 @@ def enemy_atk(character, en1):
 def baron_of_hell_atk(character, en1):
     if not character.burn_check:
         print("{} uses [Burn].".format(en1.name))
-        input(">...")
+        myinput(">...")
         enemy_range = random.randint(en1.atk_l, en1.atk_h)
         character.burn_dot_dmg = enemy_range + burn.dmg
         character.hp -= character.burn_dot_dmg
@@ -269,19 +270,19 @@ def baron_of_hell_atk(character, en1):
             enemy_heal = heal_range + heal.dmg
             print("{} uses [Heal] for {} HP.".format(en1.name, enemy_heal))
             en1.hp += enemy_heal
-            input(">...")
+            myinput(">...")
         elif chance > 3:
             enemy_range = random.randint(en1.atk_l, en1.atk_h)
             enemy_attack = enemy_range + en1.atk
             print("{} uses [Melee] for {} damage.".format(en1.name, enemy_attack - character.current_defence))
             character.hp -= enemy_attack - character.current_defence
-            input(">...")
+            myinput(">...")
     else:
         enemy_range = random.randint(en1.atk_l, en1.atk_h)
         enemy_attack = enemy_range + en1.atk
         print("{} uses [Melee] for {} damage.".format(en1.name, enemy_attack - character.current_defence))
         character.hp -= enemy_attack - character.current_defence
-        input(">...")
+        myinput(">...")
     if character.base_hp <= 0:
         end_fight_lose(character, en1)
     burn_check(character, en1)
@@ -296,9 +297,9 @@ def end_fight_win(character, en1):
     print("You defeated {}.\n".format(en1.name))
     en1.hp = en1.max_hp
     if en1.name in ["Strange Man"]:
-        input(">...")
+        myinput(">...")
         print("You murder the strange man, search his corpse, and find ....5 gold.")
-        input(">...")
+        myinput(">...")
         character.gold += 5
     if en1.name in ["Spider", "Bear", "Giant Frog", "Goblin"]:
         if character.d4_event_2:
@@ -379,7 +380,7 @@ def end_fight_lose(character, en1):
     else:
         print("You've lost 20 gold.")
         character.gold -= 20
-    input(">...")
+    myinput(">...")
     game_menu(character, en1)
 
 
@@ -388,7 +389,7 @@ def bleed_check(character, en1):
     if character.bleed_dot_count >= 2:
         en1.hp -= character.bleed_dot_dmg
     print("Your [Bleed] does {} DMG.".format(character.bleed_dot_dmg))
-    input(">...")
+    myinput(">...")
     if en1.hp <= 0:
         character.win_music_1 = True
         end_fight_win(character, en1)
@@ -406,7 +407,7 @@ def burn_check(character, en1):
     if character.burn_dot_count >= 2:
         character.hp -= character.burn_dot_dmg
     print("[Burn] does {} DMG.".format(character.burn_dot_dmg))
-    input(">...")
+    myinput(">...")
     if character.base_hp <= 0:
         end_fight_lose(character, en1)
     if character.burn_dot_count == 5:
